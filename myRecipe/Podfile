@@ -7,5 +7,6 @@ target 'myRecipe' do
 
   # Pods for myRecipe
   pod 'JTAppleCalendar', '~> 7.0'
+  pod 'ScrollableGraphView'
 
 end

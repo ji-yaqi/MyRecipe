@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x59-ze-MNI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x59-ze-MNI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,36 +12,55 @@
         <!--charts-->
         <scene sceneID="3J0-cg-uZc">
             <objects>
-                <viewController id="inI-eO-Y3T" sceneMemberID="viewController">
+                <viewController id="inI-eO-Y3T" customClass="ChartsViewController" customModule="myRecipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jRu-0J-2JN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IeI-b6-YTk">
-                                <rect key="frame" x="139" y="545" width="97" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1lG-Cl-DnD">
+                                <rect key="frame" x="36" y="202" width="303" height="291"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IeI-b6-YTk">
+                                <rect key="frame" x="139.5" y="545" width="97" height="29"/>
                                 <segments>
                                     <segment title="Day"/>
                                     <segment title="Week"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="inI-eO-Y3T" eventType="valueChanged" id="dMh-eA-5eu"/>
+                                </connections>
                             </segmentedControl>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lhS-PG-HhS">
-                                <rect key="frame" x="53" y="277" width="269" height="191"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How many calories?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvd-Eu-rdY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many calories?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvd-Eu-rdY">
                                 <rect key="frame" x="105" y="104" width="172" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="RRq-zl-VKq"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gVm-z8-fU2" firstAttribute="trailing" secondItem="yvd-Eu-rdY" secondAttribute="trailing" constant="98" id="828-jk-b6O"/>
+                            <constraint firstItem="gVm-z8-fU2" firstAttribute="bottom" secondItem="IeI-b6-YTk" secondAttribute="bottom" constant="45" id="Ogz-xs-Cay"/>
+                            <constraint firstItem="1lG-Cl-DnD" firstAttribute="centerX" secondItem="jRu-0J-2JN" secondAttribute="centerX" id="fAV-EM-jCW"/>
+                            <constraint firstItem="1lG-Cl-DnD" firstAttribute="leading" secondItem="gVm-z8-fU2" secondAttribute="leading" constant="36" id="hvx-ZG-WTq"/>
+                            <constraint firstItem="1lG-Cl-DnD" firstAttribute="centerX" secondItem="IeI-b6-YTk" secondAttribute="centerX" id="pKv-RU-fwh"/>
+                            <constraint firstItem="yvd-Eu-rdY" firstAttribute="top" secondItem="gVm-z8-fU2" secondAttribute="top" constant="84" id="pea-Jn-S28"/>
+                            <constraint firstItem="IeI-b6-YTk" firstAttribute="top" secondItem="1lG-Cl-DnD" secondAttribute="bottom" constant="52" id="udB-0l-9NA"/>
+                            <constraint firstItem="1lG-Cl-DnD" firstAttribute="top" secondItem="yvd-Eu-rdY" secondAttribute="bottom" constant="43" id="wI1-zH-xts"/>
+                            <constraint firstItem="yvd-Eu-rdY" firstAttribute="leading" secondItem="gVm-z8-fU2" secondAttribute="leading" constant="105" id="zE7-NM-8LX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gVm-z8-fU2"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="charts" id="Ft7-d0-klK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="canvas" destination="1lG-Cl-DnD" id="eY3-1I-0h1"/>
+                        <outlet property="sege" destination="IeI-b6-YTk" id="TJu-UU-aDw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5E-lH-OEv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
