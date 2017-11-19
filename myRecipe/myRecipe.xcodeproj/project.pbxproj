@@ -16,9 +16,13 @@
 		48C7DF661FBE7D7A0087A7FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48C7DF641FBE7D7A0087A7FD /* Main.storyboard */; };
 		48C7DF681FBE7D7B0087A7FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48C7DF671FBE7D7B0087A7FD /* Assets.xcassets */; };
 		48C7DF6B1FBE7D7B0087A7FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48C7DF691FBE7D7B0087A7FD /* LaunchScreen.storyboard */; };
+		48C7DF731FC236FF0087A7FD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C7DF721FC236FF0087A7FD /* CalendarViewController.swift */; };
+		48C7DF751FC238290087A7FD /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C7DF741FC238290087A7FD /* CalendarCell.swift */; };
+		CBD8AC5E67A9F74C2A97C35C /* Pods_myRecipe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C2A539B4D383F319E59F632 /* Pods_myRecipe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C2A539B4D383F319E59F632 /* Pods_myRecipe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myRecipe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12C71FBB1FBF85230002A237 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		12C71FBD1FBF85430002A237 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		12C71FBF1FBF85E50002A237 /* RecipeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetail.swift; sourceTree = "<group>"; };
@@ -30,6 +34,10 @@
 		48C7DF671FBE7D7B0087A7FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48C7DF6A1FBE7D7B0087A7FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48C7DF6C1FBE7D7B0087A7FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48C7DF721FC236FF0087A7FD /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		48C7DF741FC238290087A7FD /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		7E30E5FE1B2857DD45E6E4AD /* Pods-myRecipe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myRecipe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myRecipe/Pods-myRecipe.debug.xcconfig"; sourceTree = "<group>"; };
+		B38D39A2BD1CD6B93170D00D /* Pods-myRecipe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myRecipe.release.xcconfig"; path = "Pods/Target Support Files/Pods-myRecipe/Pods-myRecipe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +45,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBD8AC5E67A9F74C2A97C35C /* Pods_myRecipe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		029D30D95A316AE8193070CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C2A539B4D383F319E59F632 /* Pods_myRecipe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		48C7DF541FBE7D7A0087A7FD = {
 			isa = PBXGroup;
 			children = (
 				48C7DF5F1FBE7D7A0087A7FD /* myRecipe */,
 				48C7DF5E1FBE7D7A0087A7FD /* Products */,
+				5D0D80ECC597A096115FC3B7 /* Pods */,
+				029D30D95A316AE8193070CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,8 +91,19 @@
 				12C71FBD1FBF85430002A237 /* Info.swift */,
 				12C71FBF1FBF85E50002A237 /* RecipeDetail.swift */,
 				12C71FC11FBF8DF70002A237 /* RecipesViewController.swift */,
+				48C7DF721FC236FF0087A7FD /* CalendarViewController.swift */,
+				48C7DF741FC238290087A7FD /* CalendarCell.swift */,
 			);
 			path = myRecipe;
+			sourceTree = "<group>";
+		};
+		5D0D80ECC597A096115FC3B7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E30E5FE1B2857DD45E6E4AD /* Pods-myRecipe.debug.xcconfig */,
+				B38D39A2BD1CD6B93170D00D /* Pods-myRecipe.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,9 +113,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48C7DF6F1FBE7D7B0087A7FD /* Build configuration list for PBXNativeTarget "myRecipe" */;
 			buildPhases = (
+				6F67E614B2E864D7BC8C0B50 /* [CP] Check Pods Manifest.lock */,
 				48C7DF591FBE7D7A0087A7FD /* Sources */,
 				48C7DF5A1FBE7D7A0087A7FD /* Frameworks */,
 				48C7DF5B1FBE7D7A0087A7FD /* Resources */,
+				89451C353AAF94E7B5C37321 /* [CP] Embed Pods Frameworks */,
+				B75DB4DA0C75871828CCE259 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -143,6 +176,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6F67E614B2E864D7BC8C0B50 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-myRecipe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89451C353AAF94E7B5C37321 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-myRecipe/Pods-myRecipe-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myRecipe/Pods-myRecipe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B75DB4DA0C75871828CCE259 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myRecipe/Pods-myRecipe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		48C7DF591FBE7D7A0087A7FD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -153,7 +240,9 @@
 				12C71FC01FBF85E50002A237 /* RecipeDetail.swift in Sources */,
 				48C7DF631FBE7D7A0087A7FD /* ViewController.swift in Sources */,
 				12C71FC21FBF8DF70002A237 /* RecipesViewController.swift in Sources */,
+				48C7DF731FC236FF0087A7FD /* CalendarViewController.swift in Sources */,
 				48C7DF611FBE7D7A0087A7FD /* AppDelegate.swift in Sources */,
+				48C7DF751FC238290087A7FD /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +377,7 @@
 		};
 		48C7DF701FBE7D7B0087A7FD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E30E5FE1B2857DD45E6E4AD /* Pods-myRecipe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +392,7 @@
 		};
 		48C7DF711FBE7D7B0087A7FD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B38D39A2BD1CD6B93170D00D /* Pods-myRecipe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
