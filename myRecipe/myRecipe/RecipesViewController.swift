@@ -25,6 +25,11 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
         searchBar.delegate = self;
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         theData = [];
         theCollectionView.reloadData();

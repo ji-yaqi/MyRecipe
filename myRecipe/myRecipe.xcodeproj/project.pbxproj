@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12A373AC1FC77E01009766C4 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A373AB1FC77E01009766C4 /* RecipeDetailViewController.swift */; };
 		12C71FBC1FBF85230002A237 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C71FBB1FBF85230002A237 /* SwiftyJSON.swift */; };
 		12C71FBE1FBF85430002A237 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C71FBD1FBF85430002A237 /* Info.swift */; };
 		12C71FC01FBF85E50002A237 /* RecipeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C71FBF1FBF85E50002A237 /* RecipeDetail.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		0C2A539B4D383F319E59F632 /* Pods_myRecipe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myRecipe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12A373AB1FC77E01009766C4 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		12C71FBB1FBF85230002A237 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		12C71FBD1FBF85430002A237 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		12C71FBF1FBF85E50002A237 /* RecipeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetail.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				48C7DF721FC236FF0087A7FD /* CalendarViewController.swift */,
 				48C7DF741FC238290087A7FD /* CalendarCell.swift */,
 				876731EE1FC249E000AB4EDA /* ChartsViewController.swift */,
+				12A373AB1FC77E01009766C4 /* RecipeDetailViewController.swift */,
 			);
 			path = myRecipe;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				12C71FC21FBF8DF70002A237 /* RecipesViewController.swift in Sources */,
 				48C7DF731FC236FF0087A7FD /* CalendarViewController.swift in Sources */,
 				48C7DF611FBE7D7A0087A7FD /* AppDelegate.swift in Sources */,
+				12A373AC1FC77E01009766C4 /* RecipeDetailViewController.swift in Sources */,
 				48C7DF751FC238290087A7FD /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

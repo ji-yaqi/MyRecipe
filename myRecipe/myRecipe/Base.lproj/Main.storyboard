@@ -196,10 +196,10 @@
             </objects>
             <point key="canvasLocation" x="981.60000000000002" y="-151.57421289355324"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="a1g-OD-rVq">
             <objects>
-                <viewController id="cto-4v-1EK" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="recipeDetailVC" id="cto-4v-1EK" customClass="RecipeDetailViewController" customModule="myRecipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DXf-FD-epa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -246,11 +246,21 @@
                                 <rect key="frame" x="209" y="570" width="109" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add to calendar"/>
+                                <connections>
+                                    <action selector="addToCalendar:" destination="cto-4v-1EK" eventType="touchUpInside" id="oGc-1L-RQu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="SuV-e6-F25"/>
                     </view>
+                    <connections>
+                        <outlet property="ingredients" destination="eBu-M9-5jR" id="VAG-Uh-uJJ"/>
+                        <outlet property="instructions" destination="QI6-57-LVu" id="z4K-FO-rI0"/>
+                        <outlet property="mealPicker" destination="jus-uT-v1J" id="hbS-my-J5n"/>
+                        <outlet property="name" destination="R8P-xr-EBW" id="Jsa-9r-ApH"/>
+                        <outlet property="recipeImage" destination="P6B-8H-ABU" id="Ybq-i3-yoh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DPv-Nt-w74" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
