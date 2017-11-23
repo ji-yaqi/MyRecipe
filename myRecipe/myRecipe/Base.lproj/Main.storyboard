@@ -172,7 +172,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XfC-GN-61U">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recipeCell" id="XfC-GN-61U">
                                         <rect key="frame" x="0.0" y="0.0" width="170" height="208"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -189,6 +189,7 @@
                     <tabBarItem key="tabBarItem" title="search" id="eZo-de-3Ot"/>
                     <connections>
                         <outlet property="searchBar" destination="H7y-R5-OSP" id="HW3-9B-6HN"/>
+                        <outlet property="theCollectionView" destination="0nR-lu-OmH" id="lvy-Rl-vj3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0L-eh-hhv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -253,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DPv-Nt-w74" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2111.1999999999998" y="-188.45577211394306"/>
+            <point key="canvasLocation" x="1619" y="-153"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ciG-3t-iEy">
