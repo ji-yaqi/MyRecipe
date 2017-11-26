@@ -15,6 +15,8 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
     
     @IBOutlet weak var theCollectionView: UICollectionView!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     var theData: [Info] = []
     var theImageCache: [String: UIImage] = [:]
     var urlPrefix: String = "http://www.themealdb.com/api/json/v1/1/search.php?s="
@@ -25,6 +27,7 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
         searchBar.delegate = self;
         theCollectionView.delegate = self;
         theCollectionView.dataSource = self;
+        spinner.hidesWhenStopped = true;
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,7 +39,17 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
         theData = [];
         theCollectionView.reloadData();
         if(searchText != "") {
-            self.fetchDataCollectionView(query: searchText);
+            // Spinner part is similar to Lab 4.
+            spinner.startAnimating();
+            DispatchQueue.global(qos: .userInitiated) .async {
+                //do non-UI stuff that may take time
+                self.fetchDataCollectionView(query: searchText);
+                DispatchQueue.main.async {
+                    // Call UI functions with with results from other queue
+                    self.spinner.stopAnimating();
+                    self.theCollectionView.reloadData();
+                }
+            }
         }
     }
 
