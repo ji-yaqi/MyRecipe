@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12A373AC1FC77E01009766C4 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A373AB1FC77E01009766C4 /* RecipeDetailViewController.swift */; };
+		12BFDEFF1FCA25850039D0A5 /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 12BFDEFE1FCA25840039D0A5 /* noImage.png */; };
 		12C71FBC1FBF85230002A237 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C71FBB1FBF85230002A237 /* SwiftyJSON.swift */; };
 		12C71FBE1FBF85430002A237 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C71FBD1FBF85430002A237 /* Info.swift */; };
 		12C71FC01FBF85E50002A237 /* RecipeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C71FBF1FBF85E50002A237 /* RecipeDetail.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		0C2A539B4D383F319E59F632 /* Pods_myRecipe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myRecipe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A373AB1FC77E01009766C4 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
+		12BFDEFE1FCA25840039D0A5 /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
 		12C71FBB1FBF85230002A237 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		12C71FBD1FBF85430002A237 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		12C71FBF1FBF85E50002A237 /* RecipeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetail.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				48C7DF741FC238290087A7FD /* CalendarCell.swift */,
 				876731EE1FC249E000AB4EDA /* ChartsViewController.swift */,
 				12A373AB1FC77E01009766C4 /* RecipeDetailViewController.swift */,
+				12BFDEFE1FCA25840039D0A5 /* noImage.png */,
 			);
 			path = myRecipe;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			files = (
 				48C7DF6B1FBE7D7B0087A7FD /* LaunchScreen.storyboard in Resources */,
 				48C7DF681FBE7D7B0087A7FD /* Assets.xcassets in Resources */,
+				12BFDEFF1FCA25850039D0A5 /* noImage.png in Resources */,
 				48C7DF661FBE7D7A0087A7FD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
