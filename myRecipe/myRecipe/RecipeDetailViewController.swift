@@ -58,7 +58,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedMeal = meals[row];
-        // TODO (XXY): handle the selected value.
+//        print (selectedMeal)
     }
     
 }
