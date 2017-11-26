@@ -45,10 +45,9 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
         return 2;
     }
     
+    // Similar to the same function in Lab 4.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath);
-        cell.layer.borderWidth = 2.8
-        cell.layer.borderColor = UIColor.white.cgColor;
         var content: Info;
         // TODO (XXY): Fix the situation where only 1 result is returned.
         if (theData.count == 1) {
@@ -94,6 +93,54 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
             return 1;
         }
         return num / 2;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let content: Info;
+        if (theData.count == 1) {
+            content = theData[0];
+        } else {
+            content = theData[indexPath.row + 2 * indexPath.section];
+        }
+        let id = content.recipeID;
+        let name = content.name;
+        let url = content.url;
+        let noImage: UIImage? = UIImage(named: "noImage.png");
+        var recipeImage = UIImage();
+        if (url != "") {
+            if (theImageCache[id] != nil) {
+                recipeImage = theImageCache[id]!
+            } else {
+                recipeImage = noImage!;
+            }
+        } else {
+            recipeImage = noImage!;
+        }
+        
+        let json = getJSON("http://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id)
+        let mealDetail = json["meals"].arrayValue[0];
+        let instructions = mealDetail["strInstructions"].stringValue;
+        let firstIngredient = mealDetail["strIngredient1"].stringValue;
+        let firstMeasure = mealDetail["strMeasure1"].stringValue;
+        var ingredientsStr = "";
+        if (firstIngredient != "null" && firstIngredient != "") {
+            ingredientsStr = firstIngredient + ": " + firstMeasure;
+            for i in 2...20 {
+                let ingredientIndex = "strIngredient" + String(i);
+                let measureIndex = "strMeasure" + String(i);
+                let curIngredient = mealDetail[ingredientIndex].stringValue;
+                let curMeasure = mealDetail[measureIndex].stringValue;
+                if (curIngredient != "null" && curIngredient != "") {
+                    ingredientsStr += ", " + "\r\n" + curIngredient + ": " + curMeasure;
+                } else {
+                    break;
+                }
+            }
+        }
+        let recipeDetail: RecipeDetail = RecipeDetail(recipeID: id, recipeTitle:name, recipeImage: recipeImage, ingredients: ingredientsStr, instructions: instructions);
+        let detailedVC = storyboard!.instantiateViewController(withIdentifier:"recipeDetailVC") as! RecipeDetailViewController
+        detailedVC.recipeDetail = recipeDetail;
+        navigationController?.pushViewController(detailedVC, animated: true)
     }
     
     // getJSON from class demo 2.
