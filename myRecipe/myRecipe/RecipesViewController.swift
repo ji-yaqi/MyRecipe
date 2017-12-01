@@ -15,6 +15,8 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
     
     @IBOutlet weak var theCollectionView: UICollectionView!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     var theData: [Info] = []
     var theImageCache: [String: UIImage] = [:]
     var urlPrefix: String = "http://www.themealdb.com/api/json/v1/1/search.php?s="
@@ -23,6 +25,9 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         searchBar.delegate = self;
+        theCollectionView.delegate = self;
+        theCollectionView.dataSource = self;
+        spinner.hidesWhenStopped = true;
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,7 +39,17 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
         theData = [];
         theCollectionView.reloadData();
         if(searchText != "") {
-            self.fetchDataCollectionView(query: searchText);
+            // Spinner part is similar to Lab 4.
+            spinner.startAnimating();
+            DispatchQueue.global(qos: .userInitiated) .async {
+                //do non-UI stuff that may take time
+                self.fetchDataCollectionView(query: searchText);
+                DispatchQueue.main.async {
+                    // Call UI functions with with results from other queue
+                    self.spinner.stopAnimating();
+                    self.theCollectionView.reloadData();
+                }
+            }
         }
     }
 
@@ -43,9 +58,102 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
         return 2;
     }
     
+    // Similar to the same function in Lab 4.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath);
+        var content: Info;
+        // TODO (XXY): Fix the situation where only 1 result is returned.
+        if (theData.count == 1) {
+//            print ("Data count 1")
+            content = theData[0];
+        } else {
+            content = theData[indexPath.row + 2 * indexPath.section];
+        }
+        
+        let id = content.recipeID;
+        let name = content.name;
+//        print (name)
+        let url = content.url;
+        let noImage: UIImage? = UIImage(named: "noImage.png");
+        let recipeImage: UIImageView = UIImageView();
+        recipeImage.image = noImage;
+        if (url != "") {
+            if (theImageCache[id] != nil) {
+                recipeImage.image = theImageCache[id];
+            }
+        }
+        
+        recipeImage.frame = CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height - 3)
+        
+        let nameLabel: UILabel = UILabel();
+        nameLabel.text = name;
+        nameLabel.frame = CGRect(x: 0, y: cell.frame.height - 38, width: cell.frame.width, height: 36)
+        nameLabel.font = UIFont.systemFont(ofSize: 13)
+        nameLabel.numberOfLines = 0;
+        nameLabel.textColor = UIColor.white;
+        nameLabel.backgroundColor = UIColor.black.withAlphaComponent(0.5);
+        nameLabel.textAlignment = .center;
+        
+        cell.addSubview(recipeImage);
+        cell.addSubview(nameLabel);
         return cell;
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        print (theData.count)
+        let num = theData.count;
+        if (num == 1) {
+            return 1;
+        }
+        return num / 2;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let content: Info;
+        if (theData.count == 1) {
+            content = theData[0];
+        } else {
+            content = theData[indexPath.row + 2 * indexPath.section];
+        }
+        let id = content.recipeID;
+        let name = content.name;
+        let url = content.url;
+        let noImage: UIImage? = UIImage(named: "noImage.png");
+        var recipeImage = UIImage();
+        if (url != "") {
+            if (theImageCache[id] != nil) {
+                recipeImage = theImageCache[id]!
+            } else {
+                recipeImage = noImage!;
+            }
+        } else {
+            recipeImage = noImage!;
+        }
+        
+        let json = getJSON("http://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id)
+        let mealDetail = json["meals"].arrayValue[0];
+        let instructions = mealDetail["strInstructions"].stringValue;
+        let firstIngredient = mealDetail["strIngredient1"].stringValue;
+        let firstMeasure = mealDetail["strMeasure1"].stringValue;
+        var ingredientsStr = "";
+        if (firstIngredient != "null" && firstIngredient != "") {
+            ingredientsStr = firstIngredient + ": " + firstMeasure;
+            for i in 2...20 {
+                let ingredientIndex = "strIngredient" + String(i);
+                let measureIndex = "strMeasure" + String(i);
+                let curIngredient = mealDetail[ingredientIndex].stringValue;
+                let curMeasure = mealDetail[measureIndex].stringValue;
+                if (curIngredient != "null" && curIngredient != "") {
+                    ingredientsStr += ", " + "\r\n" + curIngredient + ": " + curMeasure;
+                } else {
+                    break;
+                }
+            }
+        }
+        let recipeDetail: RecipeDetail = RecipeDetail(recipeID: id, recipeTitle:name, recipeImage: recipeImage, ingredients: ingredientsStr, instructions: instructions);
+        let detailedVC = storyboard!.instantiateViewController(withIdentifier:"recipeDetailVC") as! RecipeDetailViewController
+        detailedVC.recipeDetail = recipeDetail;
+        navigationController?.pushViewController(detailedVC, animated: true)
     }
     
     // getJSON from class demo 2.
@@ -88,6 +196,7 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
             let url = result["strMealThumb"].stringValue;
             theData.append(Info(name: name, recipeID: id, url: url))
         }
+//        print (theData.count);
         cacheImages();
     }
 }

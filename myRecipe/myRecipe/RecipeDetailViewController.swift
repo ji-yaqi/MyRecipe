@@ -12,6 +12,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     let meals = ["Breakfast", "Lunch", "Dinner"];
     var selectedMeal = "Breakfast";
+    var recipeDetail: RecipeDetail!
     
     @IBOutlet weak var name: UILabel!
     
@@ -24,13 +25,18 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var mealPicker: UIPickerView!
     
     @IBAction func addToCalendar(_ sender: Any) {
-        
+        // TODO (JYQ): add the meal to the calendar.
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
+        mealPicker.dataSource = self;
+        mealPicker.delegate = self;
+        name.text = recipeDetail.recipeTitle;
+        recipeImage.image = recipeDetail.recipeImage;
+        ingredients.text = recipeDetail.ingredients;
+        instructions.text = recipeDetail.instructions;
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,7 +58,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedMeal = meals[row];
-        // TODO (XXY): handle the selected value.
+//        print (selectedMeal)
     }
     
 }
