@@ -20,34 +20,30 @@ class CalendarViewController: UIViewController {
     
     //default selection: breakfast
     var selectionStatus = "b"
+    var selectedDate = Date()
     
     @IBAction func selectMeal(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
             case 0:
-                print("breakfast selected")
                 selectionStatus = "b"
                 break
             case 1:
-                print("lunch selected")
                 selectionStatus = "l"
                 break
             case 2:
-                print("dinner selected")
                 selectionStatus = "d"
                 break
             default:
-                print("default")
+                break
             }
-        updateMeal(status: selectionStatus, date: Date())
+        updateMeal(status: selectionStatus, date: selectedDate)
         }
-
     
     func updateMeal(status: String, date: Date){
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
         formatter.dateFormat = "yyyyMMdd"
         let date = formatter.string(from: date)
-        //TODO (JYQ): fix text display and then image
         for (day, meals) in dailyMealStorage {
             if (day == date) {
                 switch status {
@@ -82,6 +78,7 @@ class CalendarViewController: UIViewController {
                 }
             }
         }
+        print(dailyMealCaloriesStorage)
         for (day, caloriess) in dailyMealCaloriesStorage {
             if (day == date) {
                 switch status {
@@ -108,7 +105,7 @@ class CalendarViewController: UIViewController {
         year.text = "2017"
         month.text = "December"
         //update today's meal
-        updateMeal(status: selectionStatus,date:Date())
+        updateMeal(status: selectionStatus,date:selectedDate)
     }
     
     func handleCelltextColor(view: JTAppleCell?, cellState: CellState) {
@@ -166,7 +163,8 @@ extension CalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendarVi
         guard let validCell = cell as? CalendarCell else {return}
         handleCelltextColor(view: cell, cellState: cellState)
         validCell.selectedView.isHidden = false
-        updateMeal(status: "b", date: date)
+        //pass the selected date with default breakfast
+        updateMeal(status: selectionStatus, date: date)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
