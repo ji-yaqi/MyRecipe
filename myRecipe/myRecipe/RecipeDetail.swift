@@ -15,4 +15,5 @@ struct RecipeDetail {
     var recipeImage: UIImage
     var ingredients: String
     var instructions: String
+    var calories: Int
 }

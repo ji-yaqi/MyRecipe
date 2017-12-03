@@ -13,6 +13,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     let meals = ["Breakfast", "Lunch", "Dinner"];
     var selectedMeal = "Breakfast";
     var recipeDetail: RecipeDetail!
+    var mealCalories: Int = 0;
     //date: detailed food
     let noImage: UIImage? = UIImage(named: "noImage.png");
     var temp = DailyMeals(Breakfast: "", Lunch: "", Dinner: "")
@@ -60,6 +61,9 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
             dailyMealImageStorage[date]?.Dinner = image
         }
         dailyMealStorage[date] = temp
+        let successAlert = UIAlertController(title: "Success", message: "This meal is added to your calendar as " + selectedMeal, preferredStyle: UIAlertControllerStyle.alert)
+        successAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(successAlert, animated: true, completion: nil)
         print(dailyMealStorage)
     }
     
@@ -72,6 +76,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         recipeImage.image = recipeDetail.recipeImage;
         ingredients.text = recipeDetail.ingredients;
         instructions.text = recipeDetail.instructions;
+        mealCalories = recipeDetail.calories;
     }
     
     override func didReceiveMemoryWarning() {

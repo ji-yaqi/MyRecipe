@@ -1,6 +1,7 @@
 //
 //  RecipesViewController.swift
 //  myRecipe
+//  Some of the Collection View and Spinner parts are from Lab 4.
 //
 //  API: http://www.TheMealDB.com
 //  Created by XXY on 11/17/17.
@@ -36,7 +37,7 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        theData = [];
+        self.theData = [];
         theCollectionView.reloadData();
         if(searchText != "") {
             // Spinner part is similar to Lab 4.
@@ -62,7 +63,6 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath);
         var content: Info;
-        // TODO (XXY): Fix the situation where only 1 result is returned.
         if (theData.count == 1) {
 //            print ("Data count 1")
             content = theData[0];
@@ -135,6 +135,7 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
         let instructions = mealDetail["strInstructions"].stringValue;
         let firstIngredient = mealDetail["strIngredient1"].stringValue;
         let firstMeasure = mealDetail["strMeasure1"].stringValue;
+        let calories: Int = Int(arc4random_uniform(480) + 120);
         var ingredientsStr = "";
         if (firstIngredient != "null" && firstIngredient != "") {
             ingredientsStr = firstIngredient + ": " + firstMeasure;
@@ -150,7 +151,7 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
                 }
             }
         }
-        let recipeDetail: RecipeDetail = RecipeDetail(recipeID: id, recipeTitle:name, recipeImage: recipeImage, ingredients: ingredientsStr, instructions: instructions);
+        let recipeDetail: RecipeDetail = RecipeDetail(recipeID: id, recipeTitle:name, recipeImage: recipeImage, ingredients: ingredientsStr, instructions: instructions, calories: calories);
         let detailedVC = storyboard!.instantiateViewController(withIdentifier:"recipeDetailVC") as! RecipeDetailViewController
         detailedVC.recipeDetail = recipeDetail;
         navigationController?.pushViewController(detailedVC, animated: true)
@@ -188,6 +189,7 @@ class RecipesViewController: UIViewController, UISearchBarDelegate, UICollection
 
     // From Lab 4.
     func fetchDataCollectionView(query: String) {
+        theData = [];
         let formatQuery = query.replacingOccurrences(of: " ", with: "&");
         let json = getJSON(urlPrefix + formatQuery)
         for result in json["meals"].arrayValue {
