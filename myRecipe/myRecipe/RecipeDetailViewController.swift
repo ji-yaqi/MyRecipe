@@ -17,6 +17,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     //date: detailed food
     let noImage: UIImage? = UIImage(named: "noImage.png");
     var temp = DailyMeals(Breakfast: "", Lunch: "", Dinner: "")
+    var tempCalories = DailyMealCalories(Breakfast: 0, Lunch: 0, Dinner: 0)
     var tempPic = DailyMealsImage(Breakfast: UIImage(named: "noImage.png")!, Lunch: UIImage(named: "noImage.png")!, Dinner: UIImage(named: "noImage.png")!)
     let formatter = DateFormatter()
 
@@ -40,6 +41,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         //add to calendar
         let name = recipeDetail.recipeTitle
         let image = recipeDetail.recipeImage
+        mealCalories = recipeDetail.calories
         
         //check for previous meals
         for (day, meals) in dailyMealStorage {
@@ -67,19 +69,36 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
             }
         }
         
+        //check for previous calories
+        for (day, calories) in dailyMealCaloriesStorage {
+            if (day == date) {
+                tempCalories.Breakfast = calories.Breakfast
+                tempCalories.Lunch = calories.Lunch
+                tempCalories.Dinner = calories.Dinner
+            } else {
+                tempCalories.Breakfast = 0
+                tempCalories.Lunch = 0
+                tempCalories.Dinner = 0
+            }
+        }
+        
         //update new storage
         if (selectedMeal == "Breakfast"){
             temp.Breakfast = name
             tempPic.Breakfast = image
+            tempCalories.Breakfast = mealCalories
         } else if (selectedMeal == "Lunch"){
             temp.Lunch = name
             tempPic.Lunch = image
+            tempCalories.Lunch = mealCalories
         } else {
             temp.Dinner = name
             tempPic.Dinner = image
+            tempCalories.Dinner = mealCalories
         }
         dailyMealStorage[date] = temp
         dailyMealImageStorage[date] = tempPic
+        dailyMealCaloriesStorage[date] = tempCalories
 
         
         let successAlert = UIAlertController(title: "Success", message: "This meal is added to your calendar as " + selectedMeal, preferredStyle: UIAlertControllerStyle.alert)

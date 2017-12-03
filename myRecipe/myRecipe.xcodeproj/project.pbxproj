@@ -22,6 +22,7 @@
 		48C7DF731FC236FF0087A7FD /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C7DF721FC236FF0087A7FD /* CalendarViewController.swift */; };
 		48C7DF751FC238290087A7FD /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C7DF741FC238290087A7FD /* CalendarCell.swift */; };
 		48D067CF1FD36EA10040F89F /* DailyMeals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D067CE1FD36EA10040F89F /* DailyMeals.swift */; };
+		48EC43CC1FD4A28A0045D066 /* DailyMealsCalories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EC43CB1FD4A28A0045D066 /* DailyMealsCalories.swift */; };
 		876731EF1FC249E000AB4EDA /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876731EE1FC249E000AB4EDA /* ChartsViewController.swift */; };
 		CBD8AC5E67A9F74C2A97C35C /* Pods_myRecipe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C2A539B4D383F319E59F632 /* Pods_myRecipe.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		48C7DF721FC236FF0087A7FD /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		48C7DF741FC238290087A7FD /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		48D067CE1FD36EA10040F89F /* DailyMeals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMeals.swift; sourceTree = "<group>"; };
+		48EC43CB1FD4A28A0045D066 /* DailyMealsCalories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMealsCalories.swift; sourceTree = "<group>"; };
 		7E30E5FE1B2857DD45E6E4AD /* Pods-myRecipe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myRecipe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myRecipe/Pods-myRecipe.debug.xcconfig"; sourceTree = "<group>"; };
 		876731EE1FC249E000AB4EDA /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		B38D39A2BD1CD6B93170D00D /* Pods-myRecipe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myRecipe.release.xcconfig"; path = "Pods/Target Support Files/Pods-myRecipe/Pods-myRecipe.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				12BFDEFE1FCA25840039D0A5 /* noImage.png */,
 				48D067CE1FD36EA10040F89F /* DailyMeals.swift */,
 				4844619A1FD3782A000F119E /* DailyMealsImage.swift */,
+				48EC43CB1FD4A28A0045D066 /* DailyMealsCalories.swift */,
 			);
 			path = myRecipe;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				4844619B1FD3782A000F119E /* DailyMealsImage.swift in Sources */,
 				48C7DF611FBE7D7A0087A7FD /* AppDelegate.swift in Sources */,
 				12A373AC1FC77E01009766C4 /* RecipeDetailViewController.swift in Sources */,
+				48EC43CC1FD4A28A0045D066 /* DailyMealsCalories.swift in Sources */,
 				48C7DF751FC238290087A7FD /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -82,6 +82,23 @@ class CalendarViewController: UIViewController {
                 }
             }
         }
+        for (day, caloriess) in dailyMealCaloriesStorage {
+            if (day == date) {
+                switch status {
+                case "b":
+                    foodCalories.text = "\(caloriess.Breakfast)" + " cal"
+                    break
+                case "l":
+                    foodCalories.text = "\(caloriess.Lunch)" + " cal"
+                    break
+                case "d":
+                    foodCalories.text = "\(caloriess.Dinner)" + " cal"
+                    break
+                default:
+                    break
+                }
+            }
+        }
     }
     
     let formatter = DateFormatter()
