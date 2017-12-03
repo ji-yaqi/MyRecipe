@@ -10,11 +10,90 @@ import Foundation
 import JTAppleCalendar
 
 class CalendarViewController: UIViewController {
-    let formatter = DateFormatter()
+    @IBOutlet var calendarView: JTAppleCalendarView!
+    @IBOutlet var year: UILabel!
+    @IBOutlet var month: UILabel!
+
+    @IBOutlet weak var foodName: UILabel!
+    @IBOutlet var foodPic: UIImageView!
+    @IBOutlet var foodCalories: UILabel!
     
+    //default selection: breakfast
+    var selectionStatus = "b"
+    
+    @IBAction func selectMeal(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+            case 0:
+                print("breakfast")
+                selectionStatus = "b"
+                break
+            case 1:
+                print("lunch")
+                selectionStatus = "l"
+                break
+            case 2:
+                print("dinner")
+                selectionStatus = "d"
+                break
+            default:
+                print("default")
+            }
+        updateMeal(status: selectionStatus, date: Date())
+        }
+
+    
+    func updateMeal(status: String, date: Date){
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Calendar.current.locale
+        formatter.dateFormat = "yyyyMMdd"
+        let date = formatter.string(from: date)
+        //TODO (JYQ): fix text display and then image
+        for (day, meals) in dailyMealStorage {
+            if (day == date) {
+                print("Breakfast: ")
+                print(meals.Breakfast)
+                print("Lunch: ")
+                print(meals.Lunch)
+                print("Dinner: ")
+                print(meals.Dinner)
+                switch status {
+                case "B":
+                    foodName.text = meals.Breakfast
+                    break
+                case "L":
+                    self.foodName.text = meals.Lunch
+                    break
+                case "D":
+                    self.foodName.text = meals.Dinner
+                    break
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    let formatter = DateFormatter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        year.text = "2017"
+        month.text = "December"
+        //update today's meal
+        updateMeal(status: selectionStatus,date:Date())
+    }
+    
+    func handleCelltextColor(view: JTAppleCell?, cellState: CellState) {
+        guard let validCell = view as? CalendarCell else {return}
+        if cellState.isSelected {
+            validCell.dateLabel.textColor = UIColor.white
+        } else {
+            if cellState.dateBelongsTo == .thisMonth {
+                validCell.dateLabel.textColor = UIColor.black
+            } else {
+                validCell.dateLabel.textColor = UIColor.lightGray
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,25 +105,54 @@ class CalendarViewController: UIViewController {
 }
 
 extension CalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource{
-    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        return
-    }
-    
-    func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
-        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
-        cell.dateLabel.text = cellState.text
-        return cell
-    }
-    
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         formatter.dateFormat = "yyyy MM dd"
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
 
-        let startDate = formatter.date(from: "2017 01 01")!
-        let endDate = formatter.date(from: "2017 12 31")!
+        let startDate = formatter.date(from: "2017 12 01")!
+        let endDate = formatter.date(from: "2018 12 31")!
 
         let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
         return parameters
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
+        cell.dateLabel.text = cellState.text
+        handleCelltextColor(view: cell, cellState: cellState)
+        if cellState.isSelected {
+            cell.selectedView.isHidden = false
+        } else {
+            cell.selectedView.isHidden = true
+        }
+        return cell
+    }
+    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+        return
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        print("selected")
+        //select a cell
+        guard let validCell = cell as? CalendarCell else {return}
+        handleCelltextColor(view: cell, cellState: cellState)
+        validCell.selectedView.isHidden = false
+        updateMeal(status: "b", date: date)
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        //deselect a cell after you select a new cell
+        guard let validCell = cell as? CalendarCell else {return}
+        handleCelltextColor(view: cell, cellState: cellState)
+        validCell.selectedView.isHidden = true
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        let date = visibleDates.monthDates.first!.date
+        formatter.dateFormat = "yyyy"
+        year.text = formatter.string(from: date)
+        formatter.dateFormat = "MMMM"
+        month.text = formatter.string(from: date)
     }
 }

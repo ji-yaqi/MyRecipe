@@ -13,7 +13,11 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     let meals = ["Breakfast", "Lunch", "Dinner"];
     var selectedMeal = "Breakfast";
     var recipeDetail: RecipeDetail!
-    
+    //date: detailed food
+    let noImage: UIImage? = UIImage(named: "noImage.png");
+    var temp = DailyMeals(Breakfast: "", Lunch: "", Dinner: "")
+    let formatter = DateFormatter()
+
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var recipeImage: UIImageView!
@@ -25,7 +29,38 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var mealPicker: UIPickerView!
     
     @IBAction func addToCalendar(_ sender: Any) {
-        // TODO (JYQ): add the meal to the calendar.
+        //get current day
+        let currentDate = Date()
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Calendar.current.locale
+        formatter.dateFormat = "yyyyMMdd"
+        let date = formatter.string(from: currentDate)
+        //add to calendar
+        let name = recipeDetail.recipeTitle
+        let image = recipeDetail.recipeImage
+        for (day, meals) in dailyMealStorage {
+            if (day == date) {
+                temp.Breakfast = meals.Breakfast
+                temp.Lunch = meals.Lunch
+                temp.Dinner = meals.Dinner
+            } else {
+                temp.Breakfast = ""
+                temp.Lunch = ""
+                temp.Dinner = ""
+            }
+        }
+        if (selectedMeal == "Breakfast"){
+            temp.Breakfast = name
+            dailyMealImageStorage[date]?.Breakfast = image
+        } else if (selectedMeal == "Lunch"){
+            temp.Lunch = name
+            dailyMealImageStorage[date]?.Lunch = image
+        } else {
+            temp.Dinner = name
+            dailyMealImageStorage[date]?.Dinner = image
+        }
+        dailyMealStorage[date] = temp
+        print(dailyMealStorage)
     }
     
     override func viewDidLoad() {
@@ -58,7 +93,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedMeal = meals[row];
-//        print (selectedMeal)
+        //print(selectedMeal)
     }
     
 }
