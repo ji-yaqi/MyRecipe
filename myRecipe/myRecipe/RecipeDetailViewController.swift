@@ -36,12 +36,6 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBAction func addToCalendar(_ sender: Any) {
-        //get current day
-        let currentDate = Date()
-        formatter.timeZone = Calendar.current.timeZone
-        formatter.locale = Calendar.current.locale
-        formatter.dateFormat = "yyyyMMdd"
-        let date = formatter.string(from: currentDate)
         //add to calendar
         let name = recipeDetail.recipeTitle
         let image = recipeDetail.recipeImage
@@ -50,6 +44,14 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         selectedDate = datePicker.date;
         print ("selected date")
         print (selectedDate)
+        
+        //get day information from the selectedDate picker
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Calendar.current.locale
+        formatter.dateFormat = "yyyyMMdd"
+        let date = formatter.string(from: selectedDate)
+        
+        
         //check for previous meals
         for (day, meals) in dailyMealStorage {
             if (day == date) {
