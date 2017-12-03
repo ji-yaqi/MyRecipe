@@ -172,6 +172,10 @@ extension CalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendarVi
         guard let validCell = cell as? CalendarCell else {return}
         handleCelltextColor(view: cell, cellState: cellState)
         validCell.selectedView.isHidden = true
+        foodName.text = ""
+        foodPic.image = UIImage(named: "noImage.png")
+        foodCalories.text = ""
+        
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
