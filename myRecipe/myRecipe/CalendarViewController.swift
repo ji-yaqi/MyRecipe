@@ -10,7 +10,7 @@ import Foundation
 import JTAppleCalendar
 
 class CalendarViewController: UIViewController {
-    @IBOutlet var calendarView: JTAppleCalendarView!
+    @IBOutlet var calendarView: JTAppleCalendarView?
     @IBOutlet var year: UILabel!
     @IBOutlet var month: UILabel!
 
@@ -102,6 +102,7 @@ class CalendarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.calendarView?.selectDates([Date()])
         year.text = "2017"
         month.text = "December"
         //update today's meal
