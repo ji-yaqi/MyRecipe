@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import JTAppleCalendar
 
 class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     let meals = ["Breakfast", "Lunch", "Dinner"];
     var selectedMeal = "Breakfast";
+    var selectedDate = Date();
+    
     var recipeDetail: RecipeDetail!
     var mealCalories: Int = 0;
     //date: detailed food
@@ -20,7 +23,6 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     var tempCalories = DailyMealCalories(Breakfast: 0, Lunch: 0, Dinner: 0)
     var tempPic = DailyMealsImage(Breakfast: UIImage(named: "noImage.png")!, Lunch: UIImage(named: "noImage.png")!, Dinner: UIImage(named: "noImage.png")!)
     let formatter = DateFormatter()
-
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var recipeImage: UIImageView!
@@ -30,6 +32,8 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var instructions: UITextView!
     
     @IBOutlet weak var mealPicker: UIPickerView!
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBAction func addToCalendar(_ sender: Any) {
         //get current day
@@ -43,6 +47,9 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         let image = recipeDetail.recipeImage
         mealCalories = recipeDetail.calories
         
+        selectedDate = datePicker.date;
+        print ("selected date")
+        print (selectedDate)
         //check for previous meals
         for (day, meals) in dailyMealStorage {
             if (day == date) {
