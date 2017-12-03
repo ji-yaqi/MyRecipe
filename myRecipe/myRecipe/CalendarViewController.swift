@@ -24,15 +24,15 @@ class CalendarViewController: UIViewController {
     @IBAction func selectMeal(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
             case 0:
-                print("breakfast")
+                print("breakfast selected")
                 selectionStatus = "b"
                 break
             case 1:
-                print("lunch")
+                print("lunch selected")
                 selectionStatus = "l"
                 break
             case 2:
-                print("dinner")
+                print("dinner selected")
                 selectionStatus = "d"
                 break
             default:
@@ -50,21 +50,32 @@ class CalendarViewController: UIViewController {
         //TODO (JYQ): fix text display and then image
         for (day, meals) in dailyMealStorage {
             if (day == date) {
-                print("Breakfast: ")
-                print(meals.Breakfast)
-                print("Lunch: ")
-                print(meals.Lunch)
-                print("Dinner: ")
-                print(meals.Dinner)
                 switch status {
-                case "B":
+                case "b":
                     foodName.text = meals.Breakfast
                     break
-                case "L":
-                    self.foodName.text = meals.Lunch
+                case "l":
+                    foodName.text = meals.Lunch
                     break
-                case "D":
-                    self.foodName.text = meals.Dinner
+                case "d":
+                    foodName.text = meals.Dinner
+                    break
+                default:
+                    break
+                }
+            }
+        }
+        for (day, images) in dailyMealImageStorage {
+            if (day == date) {
+                switch status {
+                case "b":
+                    foodPic.image = images.Breakfast
+                    break
+                case "l":
+                    foodPic.image = images.Lunch
+                    break
+                case "d":
+                    foodPic.image = images.Dinner
                     break
                 default:
                     break
