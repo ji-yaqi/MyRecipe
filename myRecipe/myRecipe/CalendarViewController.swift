@@ -49,6 +49,7 @@ class CalendarViewController: UIViewController {
                 switch status {
                 case "b":
                     foodName.text = meals.Breakfast
+                    print("date "+date)
                     break
                 case "l":
                     foodName.text = meals.Lunch
@@ -78,7 +79,6 @@ class CalendarViewController: UIViewController {
                 }
             }
         }
-        print(dailyMealCaloriesStorage)
         for (day, caloriess) in dailyMealCaloriesStorage {
             if (day == date) {
                 switch status {
@@ -164,7 +164,8 @@ extension CalendarViewController: JTAppleCalendarViewDelegate, JTAppleCalendarVi
         handleCelltextColor(view: cell, cellState: cellState)
         validCell.selectedView.isHidden = false
         //pass the selected date with default breakfast
-        updateMeal(status: selectionStatus, date: date)
+        selectedDate = date
+        updateMeal(status: selectionStatus, date: selectedDate)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
