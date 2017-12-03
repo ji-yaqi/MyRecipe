@@ -27,6 +27,7 @@
                                     <segment title="Day"/>
                                     <segment title="Week"/>
                                 </segments>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="segmentChanged:" destination="inI-eO-Y3T" eventType="valueChanged" id="dMh-eA-5eu"/>
                                 </connections>
@@ -55,7 +56,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gVm-z8-fU2"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="charts" image="chart" id="Ft7-d0-klK"/>
+                    <tabBarItem key="tabBarItem" title="charts" image="chart" id="Ft7-d0-klK">
+                        <color key="badgeColor" red="1" green="0.0" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="canvas" destination="1lG-Cl-DnD" id="eY3-1I-0h1"/>
@@ -82,11 +85,12 @@
                                     <segment title="Lunch"/>
                                     <segment title="Dinner"/>
                                 </segments>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="selectMealWithSender:" destination="pw6-Dj-H3m" eventType="valueChanged" id="p0n-ra-Wcc"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Calories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn8-Gd-S4Q">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn8-Gd-S4Q">
                                 <rect key="frame" x="82" y="570" width="211" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -97,7 +101,7 @@
                                 <rect key="frame" x="82" y="442" width="211" height="131"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jh-Nh-99f">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jh-Nh-99f">
                                 <rect key="frame" x="44" y="409" width="286" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -254,7 +258,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JuY-FI-FeD"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="calendar" image="calendar" id="cqB-U9-dgb"/>
+                    <tabBarItem key="tabBarItem" title="calendar" image="calendar" id="cqB-U9-dgb">
+                        <color key="badgeColor" red="1" green="0.0" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="foodCalories" destination="bn8-Gd-S4Q" id="Rwq-iN-4YY"/>
                         <outlet property="foodName" destination="5jh-Nh-99f" id="OMN-XI-lWj"/>
@@ -407,6 +413,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="1" green="0.0" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="huw-la-tdY" kind="relationship" relationship="viewControllers" id="flq-fQ-rCB"/>
@@ -422,7 +429,9 @@
         <scene sceneID="cc7-6V-IJh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="huw-la-tdY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="search" image="search" id="eZo-de-3Ot"/>
+                    <tabBarItem key="tabBarItem" title="search" image="search" id="eZo-de-3Ot">
+                        <color key="badgeColor" red="1" green="0.0" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ccu-Xx-0ZT">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
