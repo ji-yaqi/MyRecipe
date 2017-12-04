@@ -1,5 +1,5 @@
 # MyRecipe 
-CSE 438 Final Project 2017 Fall
+CSE 438 Final Project 2017 Fall 
 
 ## Team:
 Xueyan Xie,
