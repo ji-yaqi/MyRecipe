@@ -35,6 +35,8 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    @IBOutlet weak var calories: UILabel!
+    
     @IBAction func addToCalendar(_ sender: Any) {
         //add to calendar
         let name = recipeDetail.recipeTitle
@@ -126,6 +128,7 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         ingredients.text = recipeDetail.ingredients;
         instructions.text = recipeDetail.instructions;
         mealCalories = recipeDetail.calories;
+        calories.text = String(mealCalories);
     }
     
     override func didReceiveMemoryWarning() {
