@@ -201,8 +201,7 @@ class ChartsViewController: UIViewController,ScrollableGraphViewDataSource {
             barPlot.barWidth = 25
             barPlot.barLineWidth = 1
             barPlot.barLineColor = UIColor.lightGray
-            barPlot.barColor = UIColor.darkGray
-            
+            barPlot.barColor = UIColor.red.withAlphaComponent(0.7)
             barPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
             barPlot.animationDuration = 1.5
             
@@ -216,7 +215,7 @@ class ChartsViewController: UIViewController,ScrollableGraphViewDataSource {
             referenceLines.dataPointLabelColor = UIColor.white.withAlphaComponent(0.5)
             
             // Setup the graph
-            graphView.backgroundFillColor = UIColor.gray
+            graphView.backgroundFillColor = UIColor.lightGray
             
             graphView.shouldAnimateOnStartup = true
             
@@ -292,7 +291,7 @@ class ChartsViewController: UIViewController,ScrollableGraphViewDataSource {
             linePlot.fillGradientType = ScrollableGraphViewGradientType.linear
             linePlot.fillGradientStartColor = UIColor.darkGray
             //linePlot.fillGradientStartColor = UIColor(red: 0x55, green: 0x55, blue: 0x55,alpha:1)
-            linePlot.fillGradientEndColor = UIColor.gray
+            linePlot.fillGradientEndColor = UIColor.red.withAlphaComponent(0.5)
             
             linePlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
             
@@ -321,7 +320,7 @@ class ChartsViewController: UIViewController,ScrollableGraphViewDataSource {
             graphView.shouldAnimateOnStartup = true
             graphView.shouldAdaptRange = true
             graphView.shouldRangeAlwaysStartAtZero = true
-            graphView.rangeMax = 50
+            graphView.rangeMax = 1200
             
             // Add everything to the graph.
            // graphView.addReferenceLines(referenceLines: warningLine)
@@ -341,7 +340,7 @@ class ChartsViewController: UIViewController,ScrollableGraphViewDataSource {
         
         let topConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 150)
         let rightConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1, constant: 0)
-        let bottomConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: -100)
+        let bottomConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: -150)
         let leftConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1, constant: 0)
         
         //let heightConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 0)
