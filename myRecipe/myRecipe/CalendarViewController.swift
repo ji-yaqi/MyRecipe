@@ -1,7 +1,7 @@
 //
 //  CalendarViewController.swift
 //  myRecipe
-//  
+//  Reference: JTAppleCalendar https://github.com/patchthecode/JTAppleCalendar
 //  Created by Yaqi Ji on 11/19/17.
 //  Copyright © 2017 Recipe. All rights reserved.
 //

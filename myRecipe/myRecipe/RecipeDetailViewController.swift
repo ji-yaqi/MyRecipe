@@ -44,8 +44,8 @@ class RecipeDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         mealCalories = recipeDetail.calories
         
         selectedDate = datePicker.date;
-        print ("selected date")
-        print (selectedDate)
+        //print ("selected date")
+        //print (selectedDate)
         
         //get day information from the selectedDate picker
         formatter.timeZone = Calendar.current.timeZone
