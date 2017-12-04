@@ -26,8 +26,3 @@ Xcode 9.0.1 (Swift 4)
 ## Click on image to see our demo video
 [![Demo Video](https://img.youtube.com/vi/lBn5v7hMcD0/0.jpg)](https://www.youtube.com/watch?v=lBn5v7hMcD0)
 
-## Accomplishments that we're proud of
-* 1234
-
-## What we learned
-* 1234
