@@ -1,7 +1,7 @@
 //
 //  ChartsViewController.swift
 //  myRecipe
-//
+//  reference:https://github.com/philackm/ScrollableGraphView
 //  Created by zhiwei cheng on 11/19/17.
 //  Copyright © 2017 Recipe. All rights reserved.
 //
@@ -71,9 +71,6 @@ class ChartsViewController: UIViewController,ScrollableGraphViewDataSource {
         for(day,meals) in dailyMealCaloriesStorage{
             if(day == w7){
                 res[6] = Double(meals.Breakfast)+Double(meals.Lunch)+Double(meals.Dinner)
-                print("gothere")
-                print(res[6])
-                //res.insert(Double(meals.Breakfast)+Double(meals.Lunch)+Double(meals.Dinner), at:6)
             }
             if(day == w6){
                 res[5] = Double(meals.Breakfast)+Double(meals.Lunch)+Double(meals.Dinner)
@@ -94,31 +91,6 @@ class ChartsViewController: UIViewController,ScrollableGraphViewDataSource {
                 res[0] = Double(meals.Breakfast)+Double(meals.Lunch)+Double(meals.Dinner)
             }
         }
-        /*
-        if(check7==false){
-            res.insert(0,at:6)
-        }
-        if(check6==false){
-            res.insert(0,at:5)
-        }
-        if(check5==false){
-            res.insert(0,at:4)
-        }
-        if(check4==false){
-            res.insert(0,at:3)
-        }
-        if(check3==false){
-            res.insert(0,at:2)
-        }
-        if(check2==false){
-            res.insert(0,at:1)
-        }
-        if(check1==false){
-            res.insert(0,at:0)
-        }
- */
-        print("add")
-        print(res[6])
         return res
     }
     
@@ -156,19 +128,15 @@ class ChartsViewController: UIViewController,ScrollableGraphViewDataSource {
         self.canvas.insertSubview(graphView, at:1)
         setupConstraints()
         self.reloadx()
-        //self.reload()
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("a")
-    reloadx()
+        reloadx()
     }
     
     func reloadx(){
         print("inhere")
        darkLinePlotData1 = daily()
        darkLinePlotData2 = week()
-      // self.canvas.insertSubview(graphView, at:1)
-       //setupConstraints()
        print(darkLinePlotData1)
         print(darkLinePlotData2)
        graphView = setupGraph(self.view.frame)
@@ -226,57 +194,7 @@ class ChartsViewController: UIViewController,ScrollableGraphViewDataSource {
             graphView.addPlot(plot: barPlot)
             graphView.addReferenceLines(referenceLines: referenceLines)
             return graphView
-            /*
-            // Setup the line plot.
-            let linePlot = LinePlot(identifier: "one")
-            linePlot.lineWidth = 1
-            linePlot.lineColor = UIColor.black
-            linePlot.lineStyle = ScrollableGraphViewLineStyle.smooth
-            
-            linePlot.shouldFill = true
-            linePlot.fillType = ScrollableGraphViewFillType.gradient
-            linePlot.fillGradientType = ScrollableGraphViewGradientType.linear
-            linePlot.fillGradientStartColor = UIColor.darkGray
-            //linePlot.fillGradientStartColor = UIColor(red: 0x55, green: 0x55, blue: 0x55,alpha:1)
-            linePlot.fillGradientEndColor = UIColor.gray
-            
-            linePlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
-            
-            let dotPlot = DotPlot(identifier: "one") // Add dots as well.
-            dotPlot.dataPointSize = 2
-            dotPlot.dataPointFillColor = UIColor.white
-            
-            dotPlot.adaptAnimationType = ScrollableGraphViewAnimationType.elastic
-            
-            // Setup the reference lines.
-            let referenceLines = ReferenceLines()
-            
-            referenceLines.referenceLineLabelFont = UIFont.boldSystemFont(ofSize: 8)
-            referenceLines.referenceLineColor = UIColor.white.withAlphaComponent(0.2)
-            referenceLines.referenceLineLabelColor = UIColor.white
-            
-            referenceLines.positionType = .absolute
-            // Reference lines will be shown at these values on the y-axis.
-            referenceLines.absolutePositions = [100, 200, 300, 400, 500, 600]
-            referenceLines.includeMinMax = false
-            referenceLines.dataPointLabelColor = UIColor.white.withAlphaComponent(0.5)
-            
-            // Setup the graph
-            graphView.backgroundFillColor = UIColor.lightGray
-            graphView.dataPointSpacing = 80
-            graphView.shouldAnimateOnStartup = true
-            graphView.shouldAdaptRange = true
-            graphView.shouldRangeAlwaysStartAtZero = true
-            graphView.rangeMax = 50
-            
-            // Add everything to the graph.
-            graphView.addReferenceLines(referenceLines: warningLine)
-            graphView.addReferenceLines(referenceLines: referenceLines)
-            graphView.addPlot(plot: linePlot)
-            graphView.addPlot(plot: dotPlot)
-            graphView.direction = ScrollableGraphViewDirection.rightToLeft
-            //return graphView
- */
+          
         }
         if(sege.selectedSegmentIndex == 1){
             // Setup the line plot.
@@ -323,12 +241,10 @@ class ChartsViewController: UIViewController,ScrollableGraphViewDataSource {
             graphView.rangeMax = 1200
             
             // Add everything to the graph.
-           // graphView.addReferenceLines(referenceLines: warningLine)
             graphView.addReferenceLines(referenceLines: referenceLines)
             graphView.addPlot(plot: linePlot)
             graphView.addPlot(plot: dotPlot)
             graphView.direction = ScrollableGraphViewDirection.rightToLeft
-            //return graphView
         }
         return graphView
     }
@@ -343,35 +259,14 @@ class ChartsViewController: UIViewController,ScrollableGraphViewDataSource {
         let bottomConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: -150)
         let leftConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1, constant: 0)
         
-        //let heightConstraint = NSLayoutConstraint(item: self.graphView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 0)
-        
         graphConstraints.append(topConstraint)
         graphConstraints.append(bottomConstraint)
         graphConstraints.append(leftConstraint)
         graphConstraints.append(rightConstraint)
         
-        //graphConstraints.append(heightConstraint)
-        
         self.view.addConstraints(graphConstraints)
     }
     
-    
-    // Data Generation
-    private func generateRandomData(_ numberOfItems: Int, max: Double, shouldIncludeOutliers: Bool = true) -> [Double] {
-        var data = [Double]()
-        for _ in 0 ..< numberOfItems {
-            var randomNumber = Double(arc4random()).truncatingRemainder(dividingBy: max)
-            
-            if(shouldIncludeOutliers) {
-                if(arc4random() % 100 < 10) {
-                    randomNumber *= 3
-                }
-            }
-            
-            data.append(randomNumber)
-        }
-        return data
-    }
     
     override var prefersStatusBarHidden : Bool {
         return true
